@@ -12,9 +12,8 @@ export default function Hero() {
           </span>
         </h1>
         <p className="mx-auto mb-10 max-w-xl text-lg text-gray-400">
-          AI Software Engineer at Bitcoin Culture Hub &middot; MS CS @ Northeastern
-          &middot; 4&times; AWS Certified. I build AI-powered applications end to end
-          &mdash; from backend APIs and LLM integrations to the scalable cloud
+          I build AI-powered applications end to end
+          from backend, frontend, data pipeline, and LLM integrations to the scalable cloud
           infrastructure they run on.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
