@@ -3,8 +3,7 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-3xl px-6 py-24 text-center">
       <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">Get in Touch</h2>
       <p className="mb-10 text-gray-400">
-        I&apos;m open to co-op opportunities, full-time roles, and interesting collaborations.
-        Feel free to reach out.
+        Always happy to connect with people building cool things. Feel free to reach out.
       </p>
       <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <a

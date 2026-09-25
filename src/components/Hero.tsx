@@ -3,7 +3,7 @@ export default function Hero() {
     <section className="flex min-h-screen items-center justify-center px-6 pt-20">
       <div className="mx-auto max-w-3xl text-center">
         <p className="mb-4 text-sm font-medium tracking-widest text-accent uppercase">
-          Cloud Engineer &middot; ML Engineer &middot; Full-Stack Developer
+          AI Software Engineer &middot; Cloud Engineer &middot; DevOps Engineer &middot; Solutions Architect
         </p>
         <h1 className="mb-6 text-5xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
           Murtaza<br />
@@ -12,9 +12,10 @@ export default function Hero() {
           </span>
         </h1>
         <p className="mx-auto mb-10 max-w-xl text-lg text-gray-400">
-          MS CS @ Northeastern &middot; AWS-certified Cloud Engineer with 2.5 years
-          designing scalable infrastructure and building intelligent systems with
-          production-grade ML pipelines.
+          AI Software Engineer at Bitcoin Culture Hub &middot; MS CS @ Northeastern
+          &middot; 4&times; AWS Certified. I build AI-powered applications end to end
+          &mdash; from backend APIs and LLM integrations to the scalable cloud
+          infrastructure they run on.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a

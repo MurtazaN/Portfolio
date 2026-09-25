@@ -1,42 +1,61 @@
 const skillCategories = [
   {
-    title: "ML / AI",
-    skills: ["PyTorch", "scikit-learn", "XGBoost", "pandas", "NumPy", "SciPy", "Spark"],
+    title: "AI / LLMs",
+    skills: [
+      "OpenAI", "AWS Bedrock", "Cohere Rerank", "LangChain", "LangGraph",
+      "LlamaIndex", "Hugging Face Transformers", "vLLM", "NeMo Guardrails",
+    ],
   },
   {
-    title: "LLM / NLP",
-    skills: ["LangChain", "Hugging Face", "NeMo Guardrails", "Vertex AI", "OpenAI API"],
+    title: "ML & Data",
+    skills: ["PyTorch", "pandas", "NumPy", "Apache Spark", "Kafka", "GeoPandas"],
   },
   {
-    title: "MLOps",
-    skills: ["MLflow", "DVC", "Apache Airflow", "Evidently AI", "Great Expectations", "Docker"],
+    title: "MLOps / LLMOps",
+    skills: ["MLflow", "Apache Airflow", "DVC", "Great Expectations", "Evidently AI"],
   },
   {
     title: "Cloud Platforms",
-    skills: ["AWS (ECS, EKS, EMR, EC2, S3, IAM, VPC)", "GCP (Cloud Run, Vertex AI, BigQuery)"],
+    skills: [
+      "AWS (ECS, EKS, RDS, S3, DMS, IAM, VPC, Cognito)",
+      "GCP (Cloud Run, AI Studio, Cloud Build, Cloud Storage)",
+    ],
   },
   {
-    title: "IaC & Automation",
-    skills: ["Terraform", "Ansible", "CloudFormation", "GitHub Actions", "AWS CodePipeline"],
+    title: "Infrastructure & CI/CD",
+    skills: [
+      "Terraform", "CloudFormation", "Ansible", "Docker", "Kubernetes",
+      "GitHub Actions", "AWS CodePipeline",
+    ],
   },
   {
-    title: "Monitoring",
-    skills: ["Prometheus", "Grafana", "CloudWatch", "GCP Cloud Logging"],
+    title: "Observability",
+    skills: [
+      "OpenTelemetry (ADOT)", "AWS X-Ray", "CloudWatch", "Prometheus",
+      "Grafana", "GCP Cloud Monitoring",
+    ],
   },
   {
-    title: "Databases",
-    skills: ["PostgreSQL", "pgvector", "Pinecone", "MongoDB"],
+    title: "Databases & Search",
+    skills: [
+      "PostgreSQL (pgvector)", "Pinecone", "FAISS", "MySQL", "MongoDB",
+      "Embeddings", "Semantic Search",
+    ],
   },
   {
-    title: "Languages",
-    skills: ["Python", "SQL", "TypeScript", "JavaScript", "Java", "Bash", "R", "YAML"],
+    title: "Languages & Frameworks",
+    skills: [
+      "Python", "SQL", "TypeScript", "JavaScript", "Java", "Bash",
+      "FastAPI", "React", "Node.js", "Spring Boot",
+    ],
   },
 ];
 
 const certifications = [
-  { name: "AWS DevOps Engineer - Professional", color: "from-orange-500 to-amber-400" },
-  { name: "AWS Solutions Architect", color: "from-blue-500 to-cyan-400" },
-  { name: "AWS Developer", color: "from-emerald-500 to-green-400" },
+  { name: "AWS Certified DevOps Engineer – Professional", color: "from-orange-500 to-amber-400" },
+  { name: "AWS Certified Solutions Architect – Associate", color: "from-blue-500 to-cyan-400" },
+  { name: "AWS Certified Developer – Associate", color: "from-emerald-500 to-green-400" },
+  { name: "AWS Certified Data Engineer – Associate", color: "from-violet-500 to-purple-400" },
 ];
 
 export default function Skills() {
@@ -50,7 +69,7 @@ export default function Skills() {
       </p>
 
       {/* Certifications */}
-      <div className="mb-16 grid gap-4 sm:grid-cols-3">
+      <div className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {certifications.map((cert) => (
           <div
             key={cert.name}

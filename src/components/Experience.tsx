@@ -1,3 +1,108 @@
+type Role = {
+  title: string;
+  org: string;
+  period: string;
+  location: string;
+  summary?: string;
+  bullets: string[];
+};
+
+type Education = {
+  degree: string;
+  school: string;
+  period: string;
+  location: string;
+  detail: string;
+};
+
+const roles: Role[] = [
+  {
+    title: "AI Software Engineer",
+    org: "Bitcoin Culture Hub",
+    period: "May 2026 – Present",
+    location: "Hillsdale, IL",
+    summary:
+      "As an early team member, I own much of the technical foundation of two products: CLCT, an online marketplace, and OptEn (Opportunity Engine), a professional networking platform — working across frontend, backend, database, infrastructure, and LLM integration.",
+    bullets: [
+      "Built the AI recommendation systems powering both products — personalized product discovery in CLCT, and connection, job, and event recommendations in OptEn — using embedding models and LLMs via OpenAI and AWS Bedrock.",
+      "Designed organization-to-organization matching that aligns one organization's products and services with another's stated needs, deliberately excluding competitors rather than relying on similarity alone.",
+      "Built a job application portal end to end (posting, submission, applicant tracking, recruiter review) with two-stage applicant ranking: embedding-based retrieval followed by re-ranking with Cohere Rerank 3.5 on Bedrock.",
+      "Instrumented products with OpenTelemetry and AWS Distro for OpenTelemetry (ADOT), exporting distributed traces to X-Ray and metrics and logs to CloudWatch, with alarms on latency, error rate, and AI model cost.",
+      "Built real-time messaging over WebSockets with connection lifecycle handling, message persistence, and delivery state.",
+      "Hardened an inherited codebase with critical security gaps (broken access control, credential exposure, committed secrets), raised test coverage from 10% to 94%, and introduced mutation testing to validate test effectiveness.",
+      "Migrated MySQL to PostgreSQL with AWS DMS, introduced schema version control with Alembic, and built isolated dev and prod environments with a scheduled one-way prod-to-dev sync across RDS and S3 — moving all local development off production data.",
+      "Authored technical documentation used in investor due diligence and audits for both products, and serve as the primary technical point of contact with our AWS account team.",
+    ],
+  },
+  {
+    title: "Cloud/DevOps Engineer",
+    org: "Bridge Informatics",
+    period: "July 2022 – December 2024",
+    location: "Cambridge, MA",
+    bullets: [
+      "Designed and implemented scalable cloud architecture on AWS for data-intensive applications, using ECS and EKS (Kubernetes) for container orchestration and CloudWatch for centralized monitoring and alerting — reducing client expenditure by 30%.",
+      "Led migration of on-premises applications to AWS using Migration Hub, Application Migration Service (MGN), Database Migration Service (DMS), and DataSync, configuring networking (VPC), access control (IAM, Cognito, SSO), and load balancing (ALB/NLB) for improved performance and lower maintenance costs.",
+      "Built and maintained CI/CD pipelines with AWS CodePipeline and GitHub Actions for automated testing, builds, and zero-downtime deployments across multiple environments.",
+      "Automated infrastructure provisioning with Terraform, CloudFormation, and Ansible, minimizing configuration drift.",
+    ],
+  },
+];
+
+const education: Education[] = [
+  {
+    degree: "M.S. Computer Science",
+    school: "Northeastern University",
+    period: "Jan 2025 – May 2027",
+    location: "Boston, MA",
+    detail: "Coursework: Foundations of AI, Machine Learning, MLOps, DBMS, Algorithms, PDP",
+  },
+  {
+    degree: "B.S. Computer Science",
+    school: "Worcester State University",
+    period: "Sept 2018 – May 2022",
+    location: "Worcester, MA",
+    detail: "Minor in Business · Summa cum laude · Dean's List · Presidential Honor",
+  },
+];
+
+function TimelineItem({
+  variant,
+  title,
+  org,
+  meta,
+  children,
+}: {
+  variant: "role" | "education";
+  title: string;
+  org: string;
+  meta: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="relative">
+      <div
+        className={`absolute -left-10 top-1 h-4 w-4 rounded-full border-2 bg-[#030712] ${
+          variant === "role" ? "border-accent" : "border-primary"
+        }`}
+      />
+      <div className="rounded-xl border border-white/10 bg-surface p-6 lg:p-8">
+        <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
+          <div>
+            <h3 className="text-xl font-bold text-white">{title}</h3>
+            <p className={`text-sm font-medium ${variant === "role" ? "text-accent" : "text-primary"}`}>
+              {org}
+            </p>
+          </div>
+          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
+            {meta}
+          </span>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function Experience() {
   return (
     <section id="experience" className="border-t border-white/5 bg-surface/50 px-6 py-24">
@@ -6,88 +111,43 @@ export default function Experience() {
           Experience
         </h2>
         <p className="mx-auto mb-16 max-w-2xl text-center text-gray-400">
-          2.5 years of professional cloud engineering in production environments.
+          Cloud engineering in production since 2022, now building AI-powered products.
         </p>
 
-        <div className="relative border-l border-white/10 pl-8">
-          {/* Bridge Informatics */}
-          <div className="relative mb-12">
-            <div className="absolute -left-10 top-1 h-4 w-4 rounded-full border-2 border-accent bg-[#030712]" />
-            <div className="rounded-xl border border-white/10 bg-surface p-6 lg:p-8">
-              <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
-                <div>
-                  <h3 className="text-xl font-bold text-white">Cloud Engineer / Solutions Architect</h3>
-                  <p className="text-sm font-medium text-accent">Bridge Informatics</p>
-                </div>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
-                  July 2022 &ndash; December 2024 &middot; Cambridge, MA
-                </span>
-              </div>
+        <div className="relative space-y-12 border-l border-white/10 pl-8">
+          {roles.map((role) => (
+            <TimelineItem
+              key={role.org}
+              variant="role"
+              title={role.title}
+              org={role.org}
+              meta={`${role.period} · ${role.location}`}
+            >
+              {role.summary && (
+                <p className="mb-4 text-sm leading-relaxed text-gray-300">{role.summary}</p>
+              )}
               <ul className="space-y-3 text-sm leading-relaxed text-gray-400">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                  Designed and implemented scalable cloud architecture on AWS, leveraging ECS/EKS for container orchestration and CloudWatch for centralized monitoring — reducing client expenditure by 30%.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                  Led migration of on-premises applications to AWS, configuring VPCs, IAM policies, and ALB for improved performance and reduced maintenance costs.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                  Built CI/CD pipelines using AWS CodePipeline and GitHub Actions, enabling automated testing, builds, and zero-downtime deployments across multiple environments.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                  Reduced production timeline by 10% and increased application speed by 20% through cross-functional collaboration and streamlined deployment workflows.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                  Achieved zero security breaches over a two-year period by enforcing DevOps and cloud security standards with CloudWatch + SNS alerting.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                  Developed IaC using Terraform, CloudFormation, and Ansible — automating provisioning and minimizing configuration drift.
-                </li>
+                {role.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    {b}
+                  </li>
+                ))}
               </ul>
-            </div>
-          </div>
+            </TimelineItem>
+          ))}
 
-          {/* Education */}
-          <div className="relative mb-12">
-            <div className="absolute -left-10 top-1 h-4 w-4 rounded-full border-2 border-primary bg-[#030712]" />
-            <div className="rounded-xl border border-white/10 bg-surface p-6 lg:p-8">
-              <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
-                <div>
-                  <h3 className="text-xl font-bold text-white">M.S. Computer Science</h3>
-                  <p className="text-sm font-medium text-primary">Northeastern University</p>
-                </div>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
-                  Jan 2025 &ndash; May 2027 &middot; Boston, MA
-                </span>
-              </div>
-              <p className="text-sm text-gray-400">
-                Coursework: Foundations of AI, Machine Learning, MLOps, DBMS, Algorithms, PDP
-              </p>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -left-10 top-1 h-4 w-4 rounded-full border-2 border-primary bg-[#030712]" />
-            <div className="rounded-xl border border-white/10 bg-surface p-6 lg:p-8">
-              <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
-                <div>
-                  <h3 className="text-xl font-bold text-white">B.S. Computer Science</h3>
-                  <p className="text-sm font-medium text-primary">Worcester State University</p>
-                </div>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
-                  Sept 2018 &ndash; May 2022 &middot; Worcester, MA
-                </span>
-              </div>
-              <p className="text-sm text-gray-400">
-                Minor in Business &middot; Summa cum laude &middot; Dean&apos;s List &middot; Presidential Honor
-              </p>
-            </div>
-          </div>
+          {education.map((edu) => (
+            <TimelineItem
+              key={edu.school}
+              variant="education"
+              title={edu.degree}
+              org={edu.school}
+              meta={`${edu.period} · ${edu.location}`}
+            >
+              <p className="text-sm text-gray-400">{edu.detail}</p>
+            </TimelineItem>
+          ))}
         </div>
       </div>
     </section>

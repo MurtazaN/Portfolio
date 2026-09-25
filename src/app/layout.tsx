@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const title = "Murtaza Nipplewala | AI Software Engineer";
+const description =
+  "AI Software Engineer at Bitcoin Culture Hub · MS CS @ Northeastern · 4× AWS Certified. I build AI-powered applications end to end, from LLM integrations to scalable cloud infrastructure.";
+
 export const metadata: Metadata = {
-  title: "Murtaza Nipplewala | Cloud Engineer & ML Engineer",
-  description:
-    "MS CS @ Northeastern | AWS-certified Cloud Engineer building intelligent systems with production-grade ML pipelines",
+  title,
+  description,
   openGraph: {
-    title: "Murtaza Nipplewala | Cloud Engineer & ML Engineer",
-    description:
-      "MS CS @ Northeastern | AWS-certified Cloud Engineer building intelligent systems with production-grade ML pipelines",
+    title,
+    description,
     type: "website",
   },
 };
