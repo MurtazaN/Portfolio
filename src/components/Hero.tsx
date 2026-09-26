@@ -56,7 +56,7 @@ export default function Hero() {
             </svg>
           </a>
           <a
-            href="mailto:murtaza.sn786@gmail.com"
+            href="mailto:murtaza.nipplewala@gmail.com"
             className="text-gray-500 transition-colors hover:text-white"
             aria-label="Email"
           >

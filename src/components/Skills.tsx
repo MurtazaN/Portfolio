@@ -10,15 +10,15 @@ const skillCategories = [
   {
     title: "ML & MLOps",
     skills: [
-      "PyTorch", "NumPy", "GeoPandas", "MLflow", "Kubeflow", "Apache Airflow", "DVC",
-      "Great Expectations", "Evidently AI",
+      "PyTorch", "scikit-learn", "NumPy", "GeoPandas", "MLflow", "Kubeflow",
+      "Apache Airflow", "DVC", "Great Expectations", "Evidently AI",
     ],
   },
   {
     title: "Data & DBs",
     skills: [
-      "pandas", "Apache Spark", "Kafka", "PostgreSQL (pgvector)", "FAISS", "MySQL",
-      "MongoDB", "Embeddings",
+      "Apache Spark", "Apache Kafka", "pandas", "AWS Glue", "Redshift", "Snowflake",
+      "PostgreSQL (pgvector)", "FAISS", "MySQL", "MongoDB", "DynamoDB", "Embeddings",
     ],
   },
   {
@@ -34,7 +34,7 @@ const skillCategories = [
     title: "Infrastructure & CI/CD",
     skills: [
       "Kubernetes", "Terraform", "Pulumi", "CloudFormation", "Ansible", "Docker",
-      "Podman", "GitHub Actions", "AWS CodePipeline",
+      "Podman", "GitHub Actions",
     ],
   },
   {
@@ -111,6 +111,12 @@ export default function Skills() {
             </div>
           </div>
         ))}
+        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-white/15 p-5 text-center">
+          <p className="text-sm font-semibold text-white">&hellip;and always learning</p>
+          <p className="mt-1 text-xs text-balance text-gray-400">
+            Happy to pick up whatever the next problem needs.
+          </p>
+        </div>
       </div>
     </section>
   );
