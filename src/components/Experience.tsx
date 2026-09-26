@@ -7,13 +7,6 @@ type Role = {
   bullets: string[];
 };
 
-type Education = {
-  degree: string;
-  school: string;
-  period: string;
-  location: string;
-  detail: string;
-};
 
 const roles: Role[] = [
   {
@@ -48,31 +41,13 @@ const roles: Role[] = [
   },
 ];
 
-const education: Education[] = [
-  {
-    degree: "M.S. Computer Science",
-    school: "Northeastern University",
-    period: "Jan 2025 – May 2027",
-    location: "Boston, MA",
-    detail: "Coursework: Foundations of AI, Machine Learning, MLOps, DBMS, Algorithms, PDP",
-  },
-  {
-    degree: "B.S. Computer Science",
-    school: "Worcester State University",
-    period: "Sept 2018 – May 2022",
-    location: "Worcester, MA",
-    detail: "Minor in Business · Summa cum laude · Dean's List · Presidential Honor",
-  },
-];
 
 function TimelineItem({
-  variant,
   title,
   org,
   meta,
   children,
 }: {
-  variant: "role" | "education";
   title: string;
   org: string;
   meta: string;
@@ -81,15 +56,13 @@ function TimelineItem({
   return (
     <div className="relative">
       <div
-        className={`absolute -left-10 top-1 h-4 w-4 rounded-full border-2 bg-[#030712] ${
-          variant === "role" ? "border-accent" : "border-primary"
-        }`}
+        className="absolute -left-10 top-1 h-4 w-4 rounded-full border-2 border-accent bg-[#030712]"
       />
       <div className="rounded-xl border border-white/10 bg-surface p-6 lg:p-8">
         <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
           <div>
             <h3 className="text-xl font-bold text-white">{title}</h3>
-            <p className={`text-sm font-medium ${variant === "role" ? "text-accent" : "text-primary"}`}>
+            <p className="text-sm font-medium text-accent">
               {org}
             </p>
           </div>
@@ -118,7 +91,6 @@ export default function Experience() {
           {roles.map((role) => (
             <TimelineItem
               key={role.org}
-              variant="role"
               title={role.title}
               org={role.org}
               meta={`${role.period} · ${role.location}`}
@@ -134,18 +106,6 @@ export default function Experience() {
                   </li>
                 ))}
               </ul>
-            </TimelineItem>
-          ))}
-
-          {education.map((edu) => (
-            <TimelineItem
-              key={edu.school}
-              variant="education"
-              title={edu.degree}
-              org={edu.school}
-              meta={`${edu.period} · ${edu.location}`}
-            >
-              <p className="text-sm text-gray-400">{edu.detail}</p>
             </TimelineItem>
           ))}
         </div>
