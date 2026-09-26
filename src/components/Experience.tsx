@@ -80,12 +80,9 @@ export default function Experience() {
   return (
     <section id="experience" className="border-t border-white/5 bg-surface/50 px-6 py-24">
       <div className="mx-auto max-w-5xl">
-        <h2 className="mb-4 text-center text-3xl font-bold text-white sm:text-4xl">
+        <h2 className="mb-16 text-center text-3xl font-bold text-white sm:text-4xl">
           Experience
         </h2>
-        <p className="mx-auto mb-16 max-w-2xl text-center text-gray-400">
-          Cloud engineering in production since 2022, now building AI-powered products.
-        </p>
 
         <div className="relative space-y-12 border-l border-white/10 pl-8">
           {roles.map((role) => (

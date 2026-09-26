@@ -24,7 +24,7 @@ export default function Hero() {
             View Projects
           </a>
           <a
-            href="#contact"
+            href="/contact"
             className="rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-gray-300 transition-colors hover:border-white/40 hover:text-white"
           >
             Get in Touch

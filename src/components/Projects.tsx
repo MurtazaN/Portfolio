@@ -77,6 +77,27 @@ const featuredProjects: FeaturedProject[] = [
     color: "from-blue-500 to-cyan-400",
   },
   {
+    id: "ai-study-guide",
+    title: "AI Study Guide",
+    tagline: "Multi-Agent Study Guide Generator",
+    period: "Jul 2026",
+    problem:
+      "Asking one LLM prompt to plan a topic, explain it, and quiz you on it mixes three jobs and makes each worse. Splitting the work across focused specialists gives cleaner outlines, clearer notes, and better review questions — and it can all run on models hosted on your own machine.",
+    writeupAngle: "One job per agent",
+    description:
+      "A multi-agent system that turns any topic into a beginner-friendly study guide — a three-part outline, concise notes, and review questions — saved as clean Markdown, using models hosted locally on Ollama, LM Studio, or any OpenAI-compatible server.",
+    highlights: [
+      "Three specialist agents in a sequential pipeline: a planner writes the outline, a teacher turns it into notes, and a quiz writer creates review questions",
+      "Plain Python + LangChain version where a controller function passes each agent's output to the next, timing every step",
+      "LangGraph version of the same flow, with each specialist as a node, shared state, and edges START → planner → teacher → quiz → END",
+      "Runs fully on local models through Ollama, LM Studio, or any OpenAI-compatible server such as vLLM or llama.cpp",
+      "Documents common multi-agent patterns: parallel specialists, orchestrator–subagent, supervisor/router, human-in-the-loop, and review loops",
+    ],
+    techStack: ["Python", "LangChain", "LangGraph", "Ollama", "LM Studio"],
+    links: [{ label: "View on GitHub", href: "https://github.com/MurtazaN/AI_study_guide" }],
+    color: "from-sky-500 to-indigo-400",
+  },
+  {
     id: "nuclear-shelter",
     title: "Nuclear Shelter Location by AI-Optimization",
     tagline: "Genetic Algorithm for NP-Hard Optimization",
@@ -324,13 +345,9 @@ function OtherProjectCard({ project }: { project: OtherProject }) {
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-5xl px-6 py-24">
-      <h2 className="mb-4 text-center text-3xl font-bold text-white sm:text-4xl">
+      <h2 className="mb-16 text-center text-3xl font-bold text-white sm:text-4xl">
         Featured Projects
       </h2>
-      <p className="mx-auto mb-16 max-w-2xl text-center text-gray-400">
-        A curated selection of projects spanning ML/AI, cloud infrastructure, and
-        full-stack development.
-      </p>
 
       <div className="flex flex-col gap-10">
         {featuredProjects.map((p) => (
