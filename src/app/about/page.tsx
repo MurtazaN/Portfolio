@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Education from "@/components/Education";
 import Footer from "@/components/Footer";
@@ -24,31 +25,30 @@ export default function AboutPage() {
             />
             <div className="space-y-4 leading-relaxed text-gray-400">
               <p>
-                I&apos;m an AI software engineer who loves building things end to end &mdash;
-                from designing backend APIs and AI integrations to deploying them on scalable
-                cloud infrastructure. I spent about three years engineering cloud-native
-                solutions on AWS and GCP, owning everything from architecture decisions to
-                CI/CD pipelines and production deployments.
+                Hi, I&apos;m Murtaza. I&apos;m an AI software engineer who enjoys solving
+                problems with technology, especially when it makes someone&apos;s life a
+                little better.
               </p>
               <p>
-                Today I&apos;m an{" "}
-                <span className="text-white font-medium">AI Software Engineer at Bitcoin Culture Hub</span>,
-                where, as an early team member, I own much of the technical foundation of CLCT,
-                an online marketplace, and OptEn, a professional networking platform. Alongside
-                that, I&apos;m pursuing my{" "}
-                <span className="text-white font-medium">M.S. in Computer Science at Northeastern University</span>.
+                That&apos;s why <span className="font-medium text-white">SavVio</span> is the
+                project I&apos;m proudest of. Most apps want you to buy more; SavVio does the
+                opposite. Before you check out, it tells you whether to buy, wait or walk
+                away. Your bank account can thank us later.
               </p>
               <p>
-                Before that, I spent 2.5 years at{" "}
-                <span className="text-white font-medium">Bridge Informatics</span> as a
-                Cloud/DevOps Engineer, after graduating{" "}
-                <span className="text-white font-medium">summa cum laude</span> from Worcester
-                State University with a B.S. in Computer Science and a minor in Business. I hold
-                four <span className="text-white font-medium">AWS certifications</span> and have
-                worked across the stack &mdash; React, Node, FastAPI, Spring Boot &mdash; whether
-                that&apos;s shipping a web app, wiring up an ML model, or automating
-                infrastructure. I care most about writing clean, reliable software that actually
-                works at scale.
+                I&apos;m an experimenter at heart: new tools, new cuisines, new cities.
+                I&apos;m the friend who plans every trip around the food, and I used to play
+                football (the kind where you actually use your feet).
+              </p>
+              <p>
+                If you&apos;re building something that genuinely helps people, or you just
+                have a great restaurant recommendation, I&apos;d love to hear from you.{" "}
+                <Link
+                  href="/contact"
+                  className="font-medium text-accent transition-colors hover:text-white"
+                >
+                  Say hi &rarr;
+                </Link>
               </p>
             </div>
           </div>
