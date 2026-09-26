@@ -1,12 +1,13 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 
 const links = [
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/about", label: "About" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -15,20 +16,20 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#030712]/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="text-lg font-bold tracking-tight text-white">
-          MN<span className="text-accent">.</span>
-        </a>
+        <Link href="/" className="text-lg font-bold tracking-tight text-white">
+          Murtaza Nipplewala<span className="text-accent">.</span>
+        </Link>
 
         {/* Desktop */}
         <ul className="hidden gap-8 md:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a
+              <Link
                 href={l.href}
                 className="text-sm text-gray-400 transition-colors hover:text-white"
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -54,13 +55,13 @@ export default function Navbar() {
         <ul className="border-t border-white/10 bg-[#030712] px-6 pb-4 md:hidden">
           {links.map((l) => (
             <li key={l.href} className="py-2">
-              <a
+              <Link
                 href={l.href}
                 className="text-sm text-gray-400 transition-colors hover:text-white"
                 onClick={() => setOpen(false)}
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
