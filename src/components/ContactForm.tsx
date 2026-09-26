@@ -2,8 +2,6 @@
 import { useState } from "react";
 
 const RECIPIENT = "murtaza.nipplewala@gmail.com";
-// Public by design: a Web3Forms key only routes submissions to the owner's inbox.
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 type Status = { kind: "idle" | "sending" | "sent" | "error"; message?: string };
 
@@ -11,7 +9,7 @@ const labelClass = "mb-2 block text-xs font-semibold tracking-widest text-accent
 const fieldClass =
   "w-full rounded-lg border border-white/10 bg-[#030712] px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition-colors focus:border-accent";
 
-export default function ContactForm() {
+export default function ContactForm({ web3formsKey }: { web3formsKey?: string }) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -19,7 +17,7 @@ export default function ContactForm() {
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    if (!WEB3FORMS_KEY) {
+    if (!web3formsKey) {
       const body = `${data.get("message")}\n\n— ${data.get("name")} (${data.get("email")})`;
       window.location.href = `mailto:${RECIPIENT}?subject=${encodeURIComponent(
         String(data.get("subject")),
@@ -28,7 +26,7 @@ export default function ContactForm() {
     }
 
     setStatus({ kind: "sending" });
-    data.append("access_key", WEB3FORMS_KEY);
+    data.append("access_key", web3formsKey);
     data.append("from_name", "Portfolio contact form");
     try {
       const response = await fetch("https://api.web3forms.com/submit", {

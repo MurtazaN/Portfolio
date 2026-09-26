@@ -43,7 +43,8 @@ export default function Contact() {
           </a>
         </div>
       </div>
-      <ContactForm />
+      {/* Read at build time; the key still ships in the page, which Web3Forms allows. */}
+      <ContactForm web3formsKey={process.env.CONTACT_WEB3FORMS_KEY} />
     </section>
   );
 }
